@@ -11,6 +11,7 @@ const App = () =>{
   const [searchValue, setSearchValue] = useState('');
   const getMovieRequest = async() =>{
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=58fc0883`;
+    console.log(url);
 
     const response = await fetch(url);
     console.log(response);
@@ -22,13 +23,12 @@ const App = () =>{
   };
 
   useEffect(() =>{
-    // var inp = window.prompt("enter a query");
-    getMovieRequest();
+    console.log(searchValue);
   }, [searchValue])
   return <div> 
     <div class = "row">
     <MovieListHeading heading = 'Movies'/>
-    <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue}/>
+    <SearchBox searchValue = {searchValue} setSearchValue = {setSearchValue} getMovieRequest = {getMovieRequest}/>
     </div>
     <div class = "row">
       <MovieList movies = {movies}/>      
@@ -37,3 +37,4 @@ const App = () =>{
 }
 
 export default App;
+
